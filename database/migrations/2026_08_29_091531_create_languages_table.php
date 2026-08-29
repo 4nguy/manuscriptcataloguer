@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mss', function (Blueprint $table) {
+        Schema::create('languages', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('catalogue_number')->nullable();
-            $table->longText('description')->nullable();
-            $table->string('format')->nullable();
+            $table->string('name');
+            $table->string('text_direction')->default('ltr');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('mss');
+        Schema::dropIfExists('languages');
     }
 };

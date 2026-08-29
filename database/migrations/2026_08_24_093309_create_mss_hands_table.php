@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ms_sections', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->foreignUuid('ms_id')->constrained('mss');
+        Schema::create('mss_hands', function (Blueprint $table) {
+            $table->uuid()->primary();
+            $table->foreignUuid('ms_id')->nullable()->constrained('mss');
+            $table->foreignUuid('ms_section_id')->nullable()->constrained('ms_sections');
+            $table->foreignUuid('hand_id')->constrained('hands');
+            $table->string('applicable_to');
             $table->string('from_page_no')->nullable();
             $table->char('from_page_size', 1)->nullable();
             $table->string('to_page_no')->nullable();
             $table->char('to_page_size', 1)->nullable();
-            $table->string('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ms_sections');
+        Schema::dropIfExists('mss_hands');
     }
 };

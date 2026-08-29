@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mss', function (Blueprint $table) {
+        Schema::create('mss_languages', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('catalogue_number')->nullable();
-            $table->longText('description')->nullable();
-            $table->string('format')->nullable();
+            $table->foreignUuid('ms_id')->nullable()->constrained('mss');
+            $table->foreignUuid('ms_section_id')->nullable()->constrained('ms_sections');
+            $table->foreignUuid('language_id')->constrained('languages');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('mss');
+        Schema::dropIfExists('mss_languages');
     }
 };

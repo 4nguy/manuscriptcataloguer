@@ -11,11 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mss', function (Blueprint $table) {
+        Schema::create('hands', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('catalogue_number')->nullable();
+            $table->foreign('scribe_id')->references('id')->on('contributors');
             $table->longText('description')->nullable();
-            $table->string('format')->nullable();
+            $table->string('sample_img1_path')->nullable();
+            $table->string('sample_img2_path')->nullable();
+            $table->string('sample_img3_path')->nullable();
+            $table->string('sample_img4_path')->nullable();
+            $table->string('sample_img5_path')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -26,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('mss');
+        Schema::dropIfExists('hands');
     }
 };
