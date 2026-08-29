@@ -11,16 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ms_sections', function (Blueprint $table) {
+        Schema::create('contributors', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignUuid('ms_id')->constrained('manuscripts');
-            $table->string('from_page_no')->nullable();
-            $table->char('from_page_size', 1)->nullable();
-            $table->string('to_page_no')->nullable();
-            $table->char('to_page_size', 1)->nullable();
+            $table->string('name_in_orig_lang')->comment('Name in original language');
+            $table->string('name_orig_lang_id')->nullable();
+            $table->string('name_in_romanized_lang')->nullable();
+            $table->string('name_romanized_lang_id')->nullable();
             $table->string('description')->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ms_sections');
+        Schema::dropIfExists('contributors');
     }
 };

@@ -11,9 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mss', function (Blueprint $table) {
-            $table->id();
+        Schema::create('manuscripts', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->string('catalogue_number')->nullable();
+            $table->longText('description')->nullable();
+            $table->string('format')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -22,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('mss');
+        Schema::dropIfExists('manuscripts');
     }
 };
