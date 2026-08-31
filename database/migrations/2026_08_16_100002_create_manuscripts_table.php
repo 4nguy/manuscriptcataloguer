@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('manuscripts', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->foreignUuid('collection_id')->nullable()->constrained('collections');
+            $table->foreignUuid('genre_id')->nullable()->constrained('genres');
             $table->string('catalogue_number')->nullable();
             $table->longText('description')->nullable();
             $table->string('format')->nullable();
