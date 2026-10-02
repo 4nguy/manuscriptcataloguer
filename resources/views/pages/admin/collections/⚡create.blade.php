@@ -9,5 +9,5 @@ new class extends Component
 ?>
 
 <div>
-    {{-- Well begun is half done. - Aristotle --}}
+    {{-- An unexamined life is not worth living. - Socrates --}}
 </div>
