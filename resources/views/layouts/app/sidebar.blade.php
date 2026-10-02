@@ -15,15 +15,15 @@
                     <flux:sidebar.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
                         {{ __('Dashboard') }}
                     </flux:sidebar.item>
-                    <flux:sidebar.item icon="home" :href="route('collections')" :current="request()->routeIs('collections')" wire:navigate>
+                    <flux:sidebar.item icon="home" :href="route('admin.collections.index')" :current="request()->routeIs('collections')" wire:navigate>
                         {{ __('Collections') }}
                     </flux:sidebar.item>
-                    <flux:sidebar.item icon="home" :href="route('genres')" :current="request()->routeIs('genres')" wire:navigate>
-                        {{ __('Genres') }}
-                    </flux:sidebar.item>
-                    <flux:sidebar.item icon="home" :href="route('manuscripts')" :current="request()->routeIs('manuscripts')" wire:navigate>
-                        {{ __('Manuscripts') }}
-                    </flux:sidebar.item>
+{{--                    <flux:sidebar.item icon="home" :href="route('admin.genres.show')" :current="request()->routeIs('genres')" wire:navigate>--}}
+{{--                        {{ __('Genres') }}--}}
+{{--                    </flux:sidebar.item>--}}
+{{--                    <flux:sidebar.item icon="home" :href="route('admin.manuscripts.show')" :current="request()->routeIs('manuscripts')" wire:navigate>--}}
+{{--                        {{ __('Manuscripts') }}--}}
+{{--                    </flux:sidebar.item>--}}
                 </flux:sidebar.group>
             </flux:sidebar.nav>
 
