@@ -4,11 +4,15 @@ use Livewire\Component;
 
 new class extends Component {
     public array $collections = [];
+
+    public function navigateToCreateCollection(): void {
+        $this->redirectRoute('admin.collections.create');
+    }
 };
 ?>
 
 <div>
-    <flux:button wire:click="rou">Create</flux:button>
+    <flux:button wire:click="navigateToCreateCollection">Create</flux:button>
 
     @forelse ($collections as $collection)
         <flux:text>{{ var_dump($collection) }}</flux:text>

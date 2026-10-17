@@ -10,6 +10,7 @@ class CollectionForm extends Form
 {
     #[Validate('required|min:5|max:255')]
     public string $name = '';
+    #[Validate('required|min:5|max:1000')]
     public string $description = '';
     #[Validate('min:5|max:255')]
     public string $location = '';
@@ -18,7 +19,7 @@ class CollectionForm extends Form
     public string $image_path = '';
 
 
-    public function store()
+    public function store(): void
     {
         $this->validate();
 

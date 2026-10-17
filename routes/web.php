@@ -7,8 +7,8 @@ Route::view('/', 'welcome')->name('home');
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('dashboard', 'dashboard')->name('dashboard');
     Route::livewire('/collections', 'pages::admin.collections.⚡index')->name('admin.collections.index');
-    Route::livewire('/collections/create', 'admin.collections.⚡create')->name('admin.collections.create');
-    Route::livewire('/collections/{$id}', 'components.admin.collections.⚡edit')->name('admin.collections.edit');
+    Route::livewire('/collections/create', 'pages::admin.collections.⚡create')->name('admin.collections.create');
+    Route::livewire('/collections/{$id}', 'pages::admin.collections.⚡edit')->name('admin.collections.edit');
 
 
 //    Route::livewire('/genres', 'components.admin.genres.⚡show')->name('admin.genres.show');
