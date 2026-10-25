@@ -20,6 +20,21 @@ return new class extends Migration
             $table->string('sample_img3_path')->nullable();
             $table->string('sample_img4_path')->nullable();
             $table->string('sample_img5_path')->nullable();
+            $table->foreignId('created_by')
+                ->nullable()
+                ->references('id')
+                ->on('users')
+                ->onDelete('set null');
+            $table->foreignId('updated_by')
+                ->nullable()
+                ->references('id')
+                ->on('users')
+                ->onDelete('set null');
+            $table->foreignId('deleted_by')
+                ->nullable()
+                ->references('id')
+                ->on('users')
+                ->onDelete('set null');
             $table->timestamps();
             $table->softDeletes();
         });

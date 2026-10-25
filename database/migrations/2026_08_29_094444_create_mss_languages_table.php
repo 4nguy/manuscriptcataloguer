@@ -16,6 +16,21 @@ return new class extends Migration
             $table->foreignUuid('ms_id')->nullable()->constrained('manuscripts');
             $table->foreignUuid('ms_section_id')->nullable()->constrained('ms_sections');
             $table->foreignUuid('language_id')->constrained('languages');
+            $table->foreignId('created_by')
+                ->nullable()
+                ->references('id')
+                ->on('users')
+                ->onDelete('set null');
+            $table->foreignId('updated_by')
+                ->nullable()
+                ->references('id')
+                ->on('users')
+                ->onDelete('set null');
+            $table->foreignId('deleted_by')
+                ->nullable()
+                ->references('id')
+                ->on('users')
+                ->onDelete('set null');
             $table->timestamps();
             $table->softDeletes();
         });

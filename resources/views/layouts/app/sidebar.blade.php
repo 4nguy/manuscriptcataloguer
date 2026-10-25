@@ -18,9 +18,9 @@
                     <flux:sidebar.item icon="home" :href="route('admin.collections.index')" :current="request()->routeIs('collections')" wire:navigate>
                         {{ __('Collections') }}
                     </flux:sidebar.item>
-{{--                    <flux:sidebar.item icon="home" :href="route('admin.genres.show')" :current="request()->routeIs('genres')" wire:navigate>--}}
-{{--                        {{ __('Genres') }}--}}
-{{--                    </flux:sidebar.item>--}}
+                    <flux:sidebar.item icon="home" :href="route('admin.genres.index')" :current="request()->routeIs('genres')" wire:navigate>
+                        {{ __('Genres') }}
+                    </flux:sidebar.item>
 {{--                    <flux:sidebar.item icon="home" :href="route('admin.manuscripts.show')" :current="request()->routeIs('manuscripts')" wire:navigate>--}}
 {{--                        {{ __('Manuscripts') }}--}}
 {{--                    </flux:sidebar.item>--}}

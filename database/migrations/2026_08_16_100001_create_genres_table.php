@@ -15,6 +15,21 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('name');
             $table->string('description')->nullable();
+            $table->foreignId('created_by')
+                ->nullable()
+                ->references('id')
+                ->on('users')
+                ->onDelete('set null');
+            $table->foreignId('updated_by')
+                ->nullable()
+                ->references('id')
+                ->on('users')
+                ->onDelete('set null');
+            $table->foreignId('deleted_by')
+                ->nullable()
+                ->references('id')
+                ->on('users')
+                ->onDelete('set null');
             $table->timestamps();
             $table->softDeletes();
         });

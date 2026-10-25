@@ -15,7 +15,22 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->foreignUuid('ms_id')->constrained('manuscripts');
             $table->foreignUuid('genre_id')->constrained('genres');
-            $table->timestamps();
+            $table->boolean('is_major')->nullable();
+            $table->foreignId('created_by')
+                ->nullable()
+                ->references('id')
+                ->on('users')
+                ->onDelete('set null');
+            $table->foreignId('updated_by')
+                ->nullable()
+                ->references('id')
+                ->on('users')
+                ->onDelete('set null');
+            $table->foreignId('deleted_by')
+                ->nullable()
+                ->references('id')
+                ->on('users')
+                ->onDelete('set null');
         });
     }
 

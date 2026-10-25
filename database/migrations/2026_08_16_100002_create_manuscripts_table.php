@@ -16,8 +16,23 @@ return new class extends Migration
             $table->foreignUuid('collection_id')->nullable()->constrained('collections');
             $table->foreignUuid('genre_id')->nullable()->constrained('genres');
             $table->string('catalogue_number')->nullable();
-            $table->longText('description')->nullable();
+            $table->longText('general_description')->nullable();
             $table->string('format')->nullable();
+            $table->foreignId('created_by')
+                ->nullable()
+                ->references('id')
+                ->on('users')
+                ->onDelete('set null');
+            $table->foreignId('updated_by')
+                ->nullable()
+                ->references('id')
+                ->on('users')
+                ->onDelete('set null');
+            $table->foreignId('deleted_by')
+                ->nullable()
+                ->references('id')
+                ->on('users')
+                ->onDelete('set null');
             $table->timestamps();
             $table->softDeletes();
         });
